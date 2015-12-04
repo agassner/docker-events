@@ -1,0 +1,10 @@
+docker-events:
+  build: .
+  volumes:
+   - /var/run/docker.sock:/var/run/docker.sock
+  environment:
+    REDIS_HOST: 172.17.0.2
+  links:
+   - redis
+redis:
+  image: redis
