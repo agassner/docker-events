@@ -6,5 +6,6 @@ docker-events:
     REDIS_HOST: 172.17.0.2
   links:
    - redis
+  restart: always
 redis:
   image: redis

@@ -8,7 +8,7 @@ from docker.client import Client
 
 class Redis():
 
-    def __init__(self, host, port=6379, db=0):
+    def __init__(self, host='localhost', port=6379, db=0):
         self.client = redis.StrictRedis(host=host, port=port, db=db)
 
     def get_client(self):
@@ -44,6 +44,7 @@ class DockerDaemon():
         return self.client.inspect_container(id)
 
 
-r = Redis(os.environ.get('REDIS_HOST'))
-dd = DockerDaemon(r)
-dd.get_events()
+if __name__ == '__main__':
+    r = Redis(host=os.environ.get('REDIS_HOST'))
+    dd = DockerDaemon(r)
+    dd.get_events()
